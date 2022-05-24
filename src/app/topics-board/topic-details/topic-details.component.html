@@ -1,0 +1,66 @@
+<mat-card *ngIf="topic">
+  <mat-card-header>
+    <mat-icon mat-card-avatar>menu</mat-icon>
+    <mat-card-title>{{ topic.name }}</mat-card-title>
+    <mat-card-subtitle>{{ topic.createdBy }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    {{ topic.description }}
+    <br />
+    <br />
+    <ng-container *ngFor="let note of topic.note">
+      <span
+        ><mark>{{ note.title }}</mark></span
+      >
+      <br />
+      <span
+        ><i>{{ note.createdBy }}</i></span
+      >
+      <br />
+      <span>{{ note.text }}</span>
+      <br />
+      <br />
+    </ng-container>
+  </mat-card-content>
+</mat-card>
+
+<mat-card>
+  <div fxLayout="row" fxLayoutAlign="center center"><mat-icon>playlist_add</mat-icon> Add note</div>
+  <mat-card-content>
+    <form [formGroup]="noteForm" fxLayout="column" fxLayoutAlign="start center">
+      <mat-form-field appearance="outline">
+        <mat-label>Title</mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="title"
+          placeholder="Insert title"
+        />
+        <mat-error *ngIf="!noteForm.get('title').valid"
+          >Title is required</mat-error
+        >
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Text</mat-label>
+        <textarea
+          class="resize-vertical"
+          matInput
+          type="text"
+          formControlName="text"
+          placeholder="Insert text"
+          rows="4"
+        ></textarea>
+        <mat-error *ngIf="!noteForm.get('text').valid"
+          >Text is required</mat-error
+        >
+      </mat-form-field>
+      <button
+      mat-raised-button
+      color="accent"
+      (click)="noteForm.valid && onNoteFormSubmit()"
+    >
+      <mat-icon>playlist_add_check</mat-icon> Add
+    </button>
+    </form>
+  </mat-card-content>
+</mat-card>

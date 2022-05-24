@@ -1,0 +1,57 @@
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title fxLayout="row" fxLayoutAlign="center center">
+      <mat-icon>playlist_add</mat-icon> Click here to create a new topic
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+
+  <form [formGroup]="topicForm" fxLayout="column" fxLayoutAlign="start center">
+    <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input
+        matInput
+        type="text"
+        formControlName="name"
+        placeholder="Insert name"
+      />
+      <mat-error *ngIf="!topicForm.get('name').valid"
+        >Name is required</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Description</mat-label>
+      <textarea
+        class="resize-vertical"
+        matInput
+        type="text"
+        formControlName="description"
+        placeholder="Insert description"
+        rows="4"
+      ></textarea>
+      <mat-error *ngIf="!topicForm.get('description').valid"
+        >Description is required</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>First Note</mat-label>
+      <textarea
+        class="resize-vertical"
+        matInput
+        type="text"
+        formControlName="note"
+        placeholder="Insert first note"
+        rows="4"
+      ></textarea>
+      <mat-error *ngIf="!topicForm.get('note').valid"
+        >First Note is required</mat-error
+      >
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="accent"
+      (click)="topicForm.valid && submitForm()"
+    >
+      <mat-icon>playlist_add_check</mat-icon> Create
+    </button>
+  </form>
+</mat-expansion-panel>

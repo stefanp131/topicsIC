@@ -1,0 +1,17 @@
+.toolbar-area {
+  width: 100%;
+}
+
+.toolbar-link {
+  padding: 5px;
+  font-size: 2rem;
+  transition: all ease-in 0.1s;
+
+  &:hover {
+    border-radius: 5px;
+    font-size: 2.5rem;
+    cursor: pointer;
+    box-shadow: 2px 2px 8px black;
+    background-color: rgba(0, 0, 0, 0.25);
+  }
+}

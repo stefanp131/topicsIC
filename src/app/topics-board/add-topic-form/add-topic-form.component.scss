@@ -1,0 +1,14 @@
+:host {
+  mat-expansion-panel {
+    width: 50rem;
+    margin: 1rem;
+  }
+
+  .resize-vertical {
+    resize: vertical;
+  }
+
+  .mat-form-field {
+    width: 100%;
+  }
+}
