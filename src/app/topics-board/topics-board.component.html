@@ -3,7 +3,7 @@
 </div>
 
 <div fxLayout="row wrap" fxLayoutAlign="start start">
-  <ng-container *ngFor="let topic of topics | async">
+  <ng-container *ngFor="let topic of topics">
     <topic [topic]="topic"></topic>
   </ng-container>
 </div>

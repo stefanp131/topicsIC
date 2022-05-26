@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "my-topics-app-ic": {
+      "hosting": {
+        "topics-app": [
+          "my-topics-app-ic"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "my-topics-app-ic"
+  }
+}

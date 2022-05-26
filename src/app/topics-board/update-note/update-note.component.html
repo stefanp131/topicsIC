@@ -1,0 +1,58 @@
+<mat-card>
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <mat-icon>playlist_play</mat-icon> Update note
+  </div>
+  <mat-card-content>
+    <form
+      [formGroup]="updateForm"
+      *ngIf="updateForm"
+      fxLayout="column"
+      fxLayoutAlign="start center"
+    >
+      <mat-form-field appearance="outline">
+        <mat-label>Title</mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="title"
+          placeholder="Insert title"
+        />
+        <mat-error *ngIf="!updateForm.get('title').valid"
+          >Title is required</mat-error
+        >
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Text</mat-label>
+        <textarea
+          class="resize-vertical"
+          matInput
+          type="text"
+          formControlName="text"
+          placeholder="Insert text"
+          rows="4"
+        ></textarea>
+        <mat-error *ngIf="!updateForm.get('text').valid"
+          >Text is required</mat-error
+        >
+      </mat-form-field>
+      <div class="actions" div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="1rem">
+        <button
+          mat-raised-button
+          color="accent"
+          [routerLink]="['/', topicId]"
+          routerLinkActive="router-link-active"
+        >
+          Cancel
+        </button>
+        <button
+          mat-raised-button
+          color="accent"
+          type="submit"
+          (click)="updateForm.valid && onUpdateNoteFormSubmit()"
+        >
+          <mat-icon>playlist_add_check</mat-icon> Update
+        </button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

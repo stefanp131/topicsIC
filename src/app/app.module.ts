@@ -20,6 +20,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
 import { TopicDetailsComponent } from './topics-board/topic-details/topic-details.component';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { provideDatabase,getDatabase } from '@angular/fire/database';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { FIREBASE_OPTIONS } from '@angular/fire/compat';
+import { UpdateNoteComponent } from './topics-board/update-note/update-note.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +37,7 @@ import { TopicDetailsComponent } from './topics-board/topic-details/topic-detail
     AddTopicFormComponent,
     TopicComponent,
     TopicDetailsComponent,
+    UpdateNoteComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,8 +52,12 @@ import { TopicDetailsComponent } from './topics-board/topic-details/topic-detail
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideDatabase(() => getDatabase()),
+    provideFirestore(() => getFirestore()),
   ],
-  providers: [],
+  providers: [{ provide: FIREBASE_OPTIONS, useValue: environment.firebase }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

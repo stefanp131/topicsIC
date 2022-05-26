@@ -1,7 +1,7 @@
 import { Note } from "./note";
 
 export interface Topic {
-  id: number;
+  id: string;
   createdBy: string;
   name: string;
   description: string;

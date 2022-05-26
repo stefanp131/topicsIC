@@ -32,20 +32,7 @@
         >Description is required</mat-error
       >
     </mat-form-field>
-    <mat-form-field appearance="outline">
-      <mat-label>First Note</mat-label>
-      <textarea
-        class="resize-vertical"
-        matInput
-        type="text"
-        formControlName="note"
-        placeholder="Insert first note"
-        rows="4"
-      ></textarea>
-      <mat-error *ngIf="!topicForm.get('note').valid"
-        >First Note is required</mat-error
-      >
-    </mat-form-field>
+
     <button
       mat-raised-button
       color="accent"
