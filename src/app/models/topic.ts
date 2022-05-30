@@ -5,5 +5,5 @@ export interface Topic {
   createdBy: string;
   name: string;
   description: string;
-  note: Note[];
+  dateCreated: Date;  
 }

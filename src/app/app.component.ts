@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AccountService } from './account/account.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'topics-app';
+
+  constructor(private accountService: AccountService, private auth: AngularFireAuth) {
+    this.accountService.isAuthenticated = !!this.auth.currentUser;
+  }
 }
+

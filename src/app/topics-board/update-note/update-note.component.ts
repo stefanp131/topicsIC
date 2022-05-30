@@ -49,8 +49,8 @@ export class UpdateNoteComponent implements OnInit {
       .subscribe((note) => {
         this.note = note;
         this.updateForm = this.formBuilder.group({
-          title: new FormControl(this.note.title, Validators.required),
-          text: new FormControl(this.note.text, Validators.required),
+          title: [this.note.title, Validators.required],
+          text: [this.note.text, Validators.required],
         });
       });
   }

@@ -10,7 +10,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
   styleUrls: ['./topics-board.component.scss'],
 })
 export class TopicsBoardComponent implements OnInit {
-  public topics: Topic[];
+  public topics: Observable<Topic[]>;
 
   constructor(
     private topicService: TopicsService,
@@ -18,8 +18,22 @@ export class TopicsBoardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.topicService.getTopics().subscribe((topics) => (this.topics = topics));
+    this.topics = this.firestore
+      .collection('availableTopics', ref => ref.orderBy('dateCreated', 'desc'))
+      .snapshotChanges()
+      .pipe(
+        map((docArray) => {
+          return docArray.map((doc) => {
+            return {
+              id: doc.payload.doc.id,
+              ...(doc.payload.doc.data() as Topic),
+            };
+          });
+        })
+      )
+  }
 
-    this.topicService.fetchTopics();
+  public trackById(index: number, topic: Topic) {
+    return topic.id;
   }
 }

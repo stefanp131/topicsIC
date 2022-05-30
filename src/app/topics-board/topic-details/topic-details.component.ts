@@ -17,7 +17,7 @@ import { TopicsService } from 'src/app/services/topics.service';
   templateUrl: './topic-details.component.html',
   styleUrls: ['./topic-details.component.scss'],
 })
-export class TopicDetailsComponent implements OnInit, OnDestroy {
+export class TopicDetailsComponent implements OnInit {
   public topic: Topic;
   public notes: Note[];
 
@@ -61,33 +61,19 @@ export class TopicDetailsComponent implements OnInit, OnDestroy {
       )
       .subscribe((notes) => (this.notes = notes));
 
-    // this.topicServiceSubscription = this.topicsService
-    //   .getTopics()
-    //   .subscribe((data: Topic[]) => {
-    //     this.topic = data.find(
-    //       (t) => t.id === +this.route.snapshot.params['id']
-    //     );
-    //   });
-
     this.noteForm = this.formBuilder.group({
-      title: new FormControl('', Validators.required),
-      text: new FormControl('', Validators.required),
+      title:['', Validators.required],
+      text: ['', Validators.required],
     });
   }
 
   deleteNote(id: string) {
-    console.log(id);
-
     this.firestore
       .collection('availableTopics')
       .doc(this.route.snapshot.params['id'])
       .collection('notes')
       .doc(id)
       .delete();
-  }
-
-  ngOnDestroy(): void {
-    //this.topicServiceSubscription.unsubscribe();
   }
 
   onNoteFormSubmit() {

@@ -1,9 +1,13 @@
-<div fxLayout="row" fxLayoutAlign="center center">
-  <add-topic-form></add-topic-form>  
+<div class="create-topic-form-wrapper" fxLayout="row" fxLayoutAlign="start center">
+  <add-topic-form></add-topic-form>
 </div>
 
-<div fxLayout="row wrap" fxLayoutAlign="start start">
-  <ng-container *ngFor="let topic of topics">
-    <topic [topic]="topic"></topic>
-  </ng-container>
-</div>
+<mat-card>
+  <h2><b>Topics</b></h2>
+  <mat-card-content
+    ><div fxLayout="row wrap" fxLayoutAlign="start start">
+      <ng-container *ngFor="let topic of topics | async">
+        <topic [topic]="topic"></topic>
+      </ng-container></div
+  ></mat-card-content>
+</mat-card>

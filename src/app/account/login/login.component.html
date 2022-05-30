@@ -1,0 +1,39 @@
+<mat-card>
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <b>Login</b>
+  </div>
+  <form [formGroup]="loginForm" fxLayout="column" fxLayoutAlign="start center">
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input
+        matInput
+        type="email"
+        formControlName="email"
+        placeholder="Insert email"
+      />
+      <mat-error *ngIf="!loginForm.get('email').valid"
+        >Email is required</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input
+        matInput
+        type="password"
+        formControlName="password"
+        placeholder="Insert password"
+      />
+      <mat-error *ngIf="!loginForm.get('password').valid"
+        >Password is required</mat-error
+      >
+    </mat-form-field>
+
+    <button
+      mat-raised-button
+      color="accent"
+      (click)="loginForm.valid && submitForm()"
+    >
+      <mat-icon>login</mat-icon> Login
+    </button>
+  </form>
+</mat-card>

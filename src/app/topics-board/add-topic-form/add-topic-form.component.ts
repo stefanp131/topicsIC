@@ -24,8 +24,8 @@ export class AddTopicFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.topicForm = this.fb.group({
-      name: new FormControl('', Validators.required),
-      description: new FormControl('', Validators.required),
+      name: ['', Validators.required],
+      description: ['', Validators.required],
     });
   }
 
@@ -33,6 +33,7 @@ export class AddTopicFormComponent implements OnInit {
     this.firestore.collection('availableTopics').add({      
       createdBy: 'Stefan',
       ...this.topicForm.value,
+      dateCreated: Date.now()
     });
   }
 }

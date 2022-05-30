@@ -2,9 +2,15 @@
   <mat-card-header>
     <mat-icon mat-card-avatar>menu</mat-icon>
     <mat-card-title>{{topic.name}}</mat-card-title>
-    <mat-card-subtitle>{{topic.createdBy}}</mat-card-subtitle>
+    <mat-card-subtitle>{{topic.createdBy}} @ {{dateCreated | date: 'medium'}}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
     {{topic.description}}
+    <hr>
+    <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="1rem"> 
+      <button color="accent" mat-raised-button type="button" (click)="deleteTopic(topic.id, $event)">
+        <mat-icon>delete_outline</mat-icon>
+      </button>
+    </div>
   </mat-card-content>
 </mat-card>

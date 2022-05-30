@@ -1,7 +1,43 @@
 <mat-toolbar color="primary">
-  <div class="toolbar-area">
-    <div fxLayout="row" fxLayoutAlign="start center">
-      <span class="toolbar-link" [routerLink]="['/']" routerLinkActive="router-link-active"  style="font-family: 'Bowlby One', cursive">Topics</span>
+  <div class="toolbar-area" fxLayout="row" fxLayoutAlign="space-between center">
+    <div>
+      <span
+        class="toolbar-link"
+        [routerLink]="['/']"
+        routerLinkActive="router-link-active"
+        >Topics</span
+      >
+    </div>
+    <div class="center-title">
+      <span style="font-family: 'Bowlby One', cursive">Noter</span>
+    </div>
+
+    <div>
+      <button
+        mat-raised-button
+        color="primary"
+        *ngIf="!accountService.isAuthenticated"
+        [routerLink]="['/login']"
+        routerLinkActive="router-link-active"
+      >
+        Login
+      </button>
+      <button
+        mat-raised-button
+        color="warn"
+        *ngIf="accountService.isAuthenticated"
+        (click)="logout()"
+      >
+        Logout
+      </button>
+      <button
+        mat-raised-button
+        color="accent"
+        [routerLink]="['/register']"
+        routerLinkActive="router-link-active"
+      >
+        Register
+      </button>
     </div>
   </div>
 </mat-toolbar>
