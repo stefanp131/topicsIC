@@ -8,12 +8,19 @@ import { AccountService } from '../account/account.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+  displayName: string;
   constructor(
     public accountService: AccountService,
     public auth: AngularFireAuth
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    
+
+    this.auth.user.subscribe((data) => {
+      this.displayName = data?.displayName;
+    });
+  }
 
   logout() {
     this.accountService.logout();

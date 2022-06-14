@@ -5,19 +5,22 @@ import { AccountService } from '../account.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
-  constructor(private formBuilder: FormBuilder, private accountService: AccountService) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private accountService: AccountService
+  ) {}
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
+      displayName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
-    })
+      password: ['', Validators.required],
+    });
   }
-
 
   submitForm() {
     this.accountService.register(this.registerForm.value);

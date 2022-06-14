@@ -1,6 +1,7 @@
 <mat-toolbar color="primary">
   <div class="toolbar-area" fxLayout="row" fxLayoutAlign="space-between center">
-    <div>
+    <div *ngIf="accountService.isAuthenticated$ | async">
+      <span>Hey {{ displayName | uppercase }}!</span>
       <span
         class="toolbar-link"
         [routerLink]="['/']"
@@ -16,7 +17,7 @@
       <button
         mat-raised-button
         color="primary"
-        *ngIf="!accountService.isAuthenticated"
+        *ngIf="!(accountService.isAuthenticated$ | async)"
         [routerLink]="['/login']"
         routerLinkActive="router-link-active"
       >
@@ -25,7 +26,7 @@
       <button
         mat-raised-button
         color="warn"
-        *ngIf="accountService.isAuthenticated"
+        *ngIf="accountService.isAuthenticated$  | async"
         (click)="logout()"
       >
         Logout
