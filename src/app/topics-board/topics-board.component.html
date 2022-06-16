@@ -1,6 +1,57 @@
-<div class="create-topic-form-wrapper" fxLayout="row" fxLayoutAlign="start center">
+<div
+  class="create-topic-form-wrapper"
+  fxLayout="row"
+  fxLayoutAlign="start center"
+>
   <add-topic-form></add-topic-form>
 </div>
+
+<mat-card>
+  <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="1rem">
+    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="1rem">
+      <mat-form-field appearance="outline">
+        <mat-label>Category</mat-label>
+        <mat-select [(value)]="category" (selectionChange)="loadTopics()">
+          <mat-option value="All">All</mat-option>
+          <mat-option value="Sports">Sports</mat-option>
+          <mat-option value="Literature">Literature</mat-option>
+          <mat-option value="Music">Music</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Sort by Date</mat-label>
+        <mat-select [(value)]="sortBy" (selectionChange)="loadTopics()">
+          <mat-option value="asc">Ascending</mat-option>
+          <mat-option value="desc">Descending</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Search Box</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="Search a topic by name"
+          [(ngModel)]="searchBox"
+          (blur)="loadTopics()"
+        />
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="1rem">
+      <mat-paginator
+        #paginator
+        [length]="length"
+        [pageIndex]="pageIndex"
+        [pageSize]="pageSize"
+        [pageSizeOptions]="pageSizeOptions"
+        (page)="loadTopics()"
+        aria-label="Select page"
+      >
+      </mat-paginator>
+    </div>
+  </div>
+</mat-card>
 
 <mat-card>
   <h2><b>Topics</b></h2>
@@ -8,6 +59,8 @@
     ><div fxLayout="row wrap" fxLayoutAlign="start start">
       <ng-container *ngFor="let topic of topics | async">
         <topic [topic]="topic"></topic>
-      </ng-container></div
-  ></mat-card-content>
+      </ng-container>
+    </div>
+    <h2 *ngIf="(topics | async)?.length === 0">No results</h2></mat-card-content
+  >
 </mat-card>

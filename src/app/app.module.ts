@@ -16,7 +16,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { TopicDetailsComponent } from './topics-board/topic-details/topic-details.component';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
@@ -28,6 +28,10 @@ import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { UpdateNoteComponent } from './topics-board/update-note/update-note.component';
 import { LoginComponent } from './account/login/login.component';
 import { RegisterComponent } from './account/register/register.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatPaginatorModule } from '@angular/material/paginator';
+
+
 
 @NgModule({
   declarations: [
@@ -48,6 +52,7 @@ import { RegisterComponent } from './account/register/register.component';
     BrowserAnimationsModule,
     FlexLayoutModule,
     ReactiveFormsModule,
+    FormsModule,
     MatToolbarModule,
     MatExpansionModule,
     MatCardModule,
@@ -55,6 +60,8 @@ import { RegisterComponent } from './account/register/register.component';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatSelectModule,
+    MatPaginatorModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideDatabase(() => getDatabase()),

@@ -44,7 +44,6 @@ export class AccountService {
       .catch((err) => {
         console.log(err);
       });
-    this.router.navigate(['login']);
   }
 
   public register(user: User) {

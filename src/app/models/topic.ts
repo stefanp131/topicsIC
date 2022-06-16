@@ -6,4 +6,5 @@ export interface Topic {
   name: string;
   description: string;
   dateCreated: Date;  
+  category: 'All' | 'Sports' | "Literature" | 'Music';
 }

@@ -1,12 +1,16 @@
-.welcome-board{
+.welcome-board {
   margin: 1rem;
 }
 
 mat-card {
   padding: 2rem;
-  background-color: rgba(255,255,255,0.8);
+  background-color: rgba(255, 255, 255, 0.8);
   width: 85%;
   margin: 1rem auto;
+}
+
+:host ::ng-deep .mat-form-field-wrapper {
+  background-color: rgba(255, 255, 255, 1) !important;
 }
 
 .create-topic-form-wrapper {

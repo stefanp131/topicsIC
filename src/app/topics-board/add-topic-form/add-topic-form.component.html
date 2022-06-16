@@ -19,6 +19,15 @@
       >
     </mat-form-field>
     <mat-form-field appearance="outline">
+      <mat-label>Category</mat-label>
+      <mat-select [(value)]="category">
+        <mat-option value="All">All</mat-option>
+        <mat-option value="Sports">Sports</mat-option>
+        <mat-option value="Literature">Literature</mat-option>
+        <mat-option value="Music">Music</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
       <mat-label>Description</mat-label>
       <textarea
         class="resize-vertical"
